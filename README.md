@@ -1,3 +1,4 @@
+
 # React Native Redux Starter Code
 
 ### Login using Redux, Redux Saga and Redux Storage
@@ -38,3 +39,9 @@ Have an Android emulator running (quickest way to get started), or a device conn
 ```bash
 react-native run-android
 ```
+=======
+# aosapp
+this is a aosapp
+
+<img src="http://pic1.nipic.com/2008-12-23/200812232331478_2.jpg">
+
