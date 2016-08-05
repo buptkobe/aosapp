@@ -43,5 +43,5 @@ react-native run-android
 # aosapp
 this is a aosapp
 
-<img src="http://pic1.nipic.com/2008-12-23/200812232331478_2.jpg">
+<img src="https://github.com/buptkobe/aosapp/blob/master/screenshot/2016-08-05-09-35-46.png">
 
