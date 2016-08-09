@@ -1,0 +1,52 @@
+{
+  "name": "AOS",
+  "version": "1.0.0",
+  "dependencies": {
+    "@exponent/react-native-navigator": "^0.4.7",
+    "lodash": "^4.12.0",
+    "moment": "^2.14.1",
+    "normalizr": "^2.1.0",
+    "react": "15.2.1",
+    "react-native": "^0.29.1",
+    "react-native-button": "^1.6.0",
+    "react-native-chart": "^1.0.7-beta",
+    "react-native-drawer": "^2.2.3",
+    "react-native-flexbox-grid": "^0.2.2",
+    "react-native-forms": "^0.1.1",
+    "react-native-gifted-form": "0.0.9",
+    "react-native-gifted-listview": "0.0.15",
+    "react-native-gifted-spinner": "0.0.4",
+    "react-native-material-design": "^0.3.6",
+    "react-native-material-ui": "^0.4.2",
+    "react-native-modal-picker": "0.0.16",
+    "react-native-modalbox": "^1.3.4",
+    "react-native-navbar": "^1.5.0",
+    "react-native-refreshable-listview": "^2.0.0-beta4",
+    "react-native-router-flux": "^3.26.1",
+    "react-native-scrollable-list": "^2.1.0",
+    "react-native-scrollable-tab-view": "^0.5.3",
+    "react-native-spinkit": "^0.1.2",
+    "react-native-textinput-effects": "^0.1.3",
+    "react-native-vector-icons": "^2.0.2",
+    "react-native-xtabbar": "^0.2.1",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-logger": "^2.6.1",
+    "redux-saga": "^0.10.4",
+    "redux-storage": "^4.0.0",
+    "redux-storage-engine-reactnativeasyncstorage": "^1.0.0",
+    "tcomb-form-native": "^0.5.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.0.4",
+    "eslint": "^2.10.2",
+    "eslint-plugin-react-native": "^1.1.0-beta",
+    "remote-redux-devtools": "^0.3.3",
+    "remote-redux-devtools-on-debugger": "^0.4.5",
+    "rnpm-plugin-upgrade": "^0.26.0"
+  },
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "postinstall": "remotedev-debugger"
+  }
+}
