@@ -52,7 +52,8 @@ class BacklogListBySprint extends Component {
 	          cbrief={rowData.cbrief}
 	          csubmitter={rowData.csubmitter}
             cmodulename={rowData.cmodulename}
-            idifficulty={rowData.idifficulty}/>
+            idifficulty={rowData.idifficulty}
+            dregdate={rowData.dregdate}/>
     );
   };
 

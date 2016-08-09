@@ -65,7 +65,7 @@ class SprintScreen extends Component {
 		    	<ListItem
 	                key={rowData.cguid}
 	                leftIcon={
-	                    <Icon name={left} size={18}/>
+	                    <Icon name={left} size={18} style={{marginTop:20}} color="blue"/>
 	                }
 	                primaryText={rowData.cname}
 	                secondaryText={rowData.dstart + '--' + rowData.dend}
@@ -78,6 +78,7 @@ class SprintScreen extends Component {
 	                    	<Text>{rowData.teamname}</Text>
 	                    </View>
 	                }
+	                lines={"dynamic"}
 	            />   
 	            <Divider />
             </TouchableOpacity>

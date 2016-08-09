@@ -53,7 +53,7 @@ class BacklogListByPV extends Component {
 	          csubmitter={rowData.csubmitter}
             cmodulename={rowData.cmodulename}
             idifficulty={rowData.idifficulty}
-            />
+            dregdate={rowData.dregdate}/>
     );
   };
 

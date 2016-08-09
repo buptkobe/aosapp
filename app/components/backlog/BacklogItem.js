@@ -30,15 +30,20 @@ class BacklogItem extends Component {
                 
                 <ListItem
                     leftIcon={
-                        <Icon name={lficon} size={24} color="#d45353"/>
+                        <Icon name={lficon} size={24} color="#d45353" style={{marginTop:20}}/>
                     }
                     primaryText={this.props.cbrief}
-                    secondaryText={this.props.csubmitter + '   ' + this.props.cmodulename}
+                    secondaryText={this.props.cmodulename}
+                    secondaryTextMoreLine={[{
+                        text:this.props.csubmitter + '\t\t' + this.props.dregdate,
+                        style:{fontSize:10,color:'#63B8FF'}
+                    }]}
                     rightIcon={
                         <View style={{marginTop:20}}>
                             <Avatar text={'' + this.props.idifficulty} size={34}  backgroundColor="#1b64a5"/>
                         </View>
                     }
+                    lines={"dynamic"}
                 />   
                 <Divider />
                 
