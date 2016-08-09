@@ -104,7 +104,7 @@ class LoginScreen extends Component {
               underlineColorAndroid="transparent"
               numberOfLines={1}
               autoFocus={false}
-              textAlign="center"
+              textAlign="left"
               onBlur={this.fetchDevGroup.bind(this)}
             />
           </View>
@@ -121,7 +121,7 @@ class LoginScreen extends Component {
               secureTextEntry={true}
               underlineColorAndroid="transparent"
               numberOfLines={1}
-              textAlign="center"
+              textAlign="left"
             />
           </View>
 
@@ -201,6 +201,8 @@ const styles = StyleSheet.create({
   },
   input:{
     marginLeft:10,
+    width:Util.size.width-50,
+   
     height:40,
     borderColor:'#ccc',
   },
