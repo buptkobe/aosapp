@@ -6,7 +6,8 @@ import {
     TouchableNativeFeedback,
     TouchableWithoutFeedback,
     Text,
-    Image
+    Image,
+    TouchableOpacity
 } from 'react-native';
 import NavigationBar from 'react-native-navbar';
 import { Actions} from 'react-native-router-flux';
@@ -25,12 +26,11 @@ class BacklogDetail extends Component {
 		      alert('hello!');
 		    }
 	  	};
-	  	var leftButtonConfig = {
-		    title: <Icon name="arrow-back" size={18}></Icon>,
-		    handler: function onBack() {
-		      Actions.pop();
-		    },
-	  	};
+	  	var leftButtonConfig = 
+	        <TouchableOpacity style={{justifyContent: 'center',marginLeft:10}} 
+	            onPress={()=>{Actions.pop()}} >
+	            <Icon name="arrow-back" size={18}></Icon>
+          	</TouchableOpacity>;
 
 	  	var titleConfig = {
 		    title: 'backlog详情',

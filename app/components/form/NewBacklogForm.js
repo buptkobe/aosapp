@@ -21,15 +21,48 @@ import CustomPick from './CustomPick';
 import NavigationBar from 'react-native-navbar';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import Service from '../../common/service';
+import { query as projectQuery } from '../../actions/projectActions';
+import { query as moduleQuery } from '../../actions/moduleActions';
+import { query as versionQuery } from '../../actions/versionActions';
 
 class NewBacklogForm extends Component {
+  state = {
+    moduleoptions:[],
+    versionoptions:[],
+  };
 
-  onPress() {
-    // call getValue() to get the values of the form
-    var value = this.refs.form.getValue();
-    if (value) { // if validation fails, value will be null
-      console.log(value); // value here is an instance of Person
+  handlePress(ref) {
+    
+    if (ref === 'LogData') {
+      console.log(this.form.getData());
+    } else if (ref === 'LogValidationErrors') {
+      console.log(this.form.getValidationErrors());
+    } else if (ref === 'SaveData') {
+      var data = this.form.getData();
+      data['story'] = this.refs.story.value;
+      data['devrule'] = this.refs.devrule.value;
+      data['testrule'] = this.refs.testrule.value;
+      alert(JSON.stringify(data));
     }
+  };
+
+  handleChange(ref, change) {
+    console.log(ref, change);
+    alert(ref);
+    if (ref === 'projectPick') {
+      const projectid = change;
+      this.props.moduleQuery(projectid);
+      this.props.versionQuery(projectid);
+      this.setState({
+        moduleoptions:this.props.module.moduleoptions,
+        versionoptions:this.props.version.versionoptions,
+      });
+    }
+  };
+
+  componentDidMount() {
+    const teamid = this.props.user.user.devgroupid;
+    this.props.projectQuery(teamid);
   };
 
   render() {
@@ -41,13 +74,13 @@ class NewBacklogForm extends Component {
           alert('hello!');
         }
     };
-    var leftButtonConfig = {
-        title: <Mdicon name="arrow-back" size={18}></Mdicon>,
-        handler: function onBack() {
-          Actions.pop();
-        },
-    };
-
+    var leftButtonConfig = 
+        <View style={{justifyContent: 'center',marginLeft:10}}>
+          <Mdicon name="arrow-back" 
+            size={18} 
+            onPress={()=>{Actions.pop()}} 
+            ></Mdicon>
+        </View>;
     var titleConfig = {
         title: 'backlog新增',
     };
@@ -55,7 +88,7 @@ class NewBacklogForm extends Component {
       <View style={styles.container}>
         <NavigationBar
               title={titleConfig}
-              style={{height:64,borderBottom:1}}
+              style={{height:64,borderBottomWidth:1}}
               leftButton={leftButtonConfig}
         />
         <ScrollView>
@@ -63,6 +96,8 @@ class NewBacklogForm extends Component {
 	        
       		<Form
               ref={(ref) => { this.form = ref; }}
+              onPress={this.handlePress.bind(this)}
+              onChange={this.handleChange.bind(this)}
             >
               
               <Section
@@ -81,19 +116,25 @@ class NewBacklogForm extends Component {
                 ref={"customSection"}
               >
                 <CustomPick 
-                  ref={"CustomPick1"} 
+                  ref={"projectPick"} 
                   selectoptionlabel={""}
-                  type="project"
+                  optionsdata={this.props.project.projectoptions}
+                  value={""}
+                  onChange={(value)=>{this.refs.projectPick.value=value}}
                   title="项目"/>
                 <CustomPick  
-                  ref={"CustomPick2"} 
+                  ref={"modulePick"} 
                   selectoptionlabel={""}
-                  type="module"
+                  optionsdata={this.state.moduleoptions}
+                  value={""}
+                  onChange={(value)=>{this.refs.modulePick.value=value}}
                   title="模块"/>
                 <CustomPick  
-                  ref={"CustomPick3"} 
+                  ref={"versionPick"} 
                   selectoptionlabel={""}
-                  type="version"
+                  optionsdata={this.state.versionoptions}
+                  value={""}
+                  onChange={(value)=>{this.refs.versionPick.value=value}}
                   title="版本"/>
               </Section>
 
@@ -107,26 +148,26 @@ class NewBacklogForm extends Component {
                   >
                     <View tabLabel='用户故事'>
                       <TextInputCell
-                        ref={"MultiLineTextInput2"}
+                        ref={"story"}
                         inputProps={{ multiline: true, color: 'green' }}
                         cellHeight={80}
-                        value={"作为...,我希望...,这样我可以..."}
+                        onChange={(value)=>{this.refs.story.value=value}}
                       />
                     </View>
                     <View tabLabel='开发规约'>
                       <TextInputCell
-                        ref={"MultiLineTextInput3"}
+                        ref={"devrule"}
                         inputProps={{ multiline: true, color: 'green' }}
                         cellHeight={150}
-                        value={"需要修改的地方：\n\n修改方案：\n\n注意事项："}
+                        onChange={(value)=>{this.refs.devrule.value=value}}
                       />
                     </View>
                     <View tabLabel='测试规约'>
                       <TextInputCell
-                        ref={"MultiLineTextInput4"}
+                        ref={"testrule"}
                         inputProps={{ multiline: true, color: 'green' }}
                         cellHeight={80}
-                        value={"影响范围....测试范围...."}
+                        onChange={(value)=>{this.refs.testrule.value=value}}
                       />
                     </View>
                   </ScrollableTabView>
@@ -177,15 +218,20 @@ var styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  const { user } = state;
+  const { user,project,module,version } = state;
 
   return {
     user,
+    project,
+    module,
+    version
   }
 }
 
 const actions = {
-  
+    projectQuery,
+    moduleQuery,
+    versionQuery
 }
 
 export default connect(mapStateToProps, actions)(NewBacklogForm);

@@ -4,6 +4,9 @@ import user from './user';
 import entities from './entities';
 import sprint from './sprint';
 import backlog from './backlog';
+import project from './project';
+import module from './module';
+import version from './version';
 
 export default combineReducers({
   counter,
@@ -11,4 +14,7 @@ export default combineReducers({
   //entities,
   sprint,
   backlog,
+  project,
+  module,
+  version
 });

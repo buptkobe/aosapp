@@ -3,7 +3,8 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight
+  TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { queryByPV } from '../../actions/backlogActions';
@@ -24,7 +25,7 @@ class BacklogListByPV extends Component {
 	const sprintid = this.props.sprintid;
 	this.props.queryByPV(sprintid);
 	setTimeout(() => {
-		callback(this.props.backlog.backlogs);
+		callback(this.props.backlog.backlogsall);
 	}, 1000);
   };
 
@@ -63,12 +64,11 @@ class BacklogListByPV extends Component {
           alert('hello!');
         }
     };
-    var leftButtonConfig = {
-        title: <Icon name="arrow-back" size={18}></Icon>,
-        handler: function onBack() {
-          Actions.pop();
-        },
-    };
+    var leftButtonConfig = 
+          <TouchableOpacity style={{justifyContent: 'center',marginLeft:10}} 
+            onPress={()=>{Actions.pop()}} >
+            <Icon name="arrow-back" size={18}></Icon>
+          </TouchableOpacity>;
 
     var titleConfig = {
         title: 'backlog列表',

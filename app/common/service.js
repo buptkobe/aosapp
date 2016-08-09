@@ -8,7 +8,8 @@ var Service = {
   backloglistbysp: 'pt_aosapp_service_backlogbysp',
   backloglistbypv: 'pt_aosapp_service_backlogbypr',
   projectlist: 'dev_project_list',
-  versionlist: 'dev_release_list'
+  versionlist: 'dev_release_list',
+  modulelist: 'dev_module_list',
 };
 
 module.exports = Service;

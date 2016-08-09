@@ -30,6 +30,13 @@ export function querySuccess({backlogs}) {
   };
 }
 
+export function queryByPVSuccess({backlogs}) {
+  return {
+    type: types.BACKLOG_QUERYBYPVSUCCESS,
+    backlogs,
+  };
+}
+
 export function queryFailure(err) {
   return {
     type: types.BACKLOG_QUERYFAILURE,

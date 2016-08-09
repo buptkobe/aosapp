@@ -1,7 +1,7 @@
 import React from 'react';
 import { take, put, call, fork, select } from 'redux-saga/effects'
 import * as types from '../actions/actionTypes';
-import { querySuccess, queryFailure } from '../actions/backlogActions';
+import { querySuccess, queryFailure, queryByPVSuccess } from '../actions/backlogActions';
 import Util from '../common/util';
 import Service from '../common/service';
 
@@ -87,7 +87,7 @@ function* queryByPVCall({project, version}) {
     
   });
   console.log(backloglistData);
-  yield put(querySuccess(backloglistData));
+  yield put(queryByPVSuccess(backloglistData));
   console.log('SAGA BACKLOG QUERY SUCCESS: ', backloglistData);
 };
 

@@ -4,6 +4,7 @@ const initialState = {
   backlogs: [],
   errorMessage: '',
   username: '',
+  backlogsall: [],
 };
 
 export default function backlog(state = initialState, action) {
@@ -20,6 +21,10 @@ export default function backlog(state = initialState, action) {
       return Object.assign({}, state, {
         username: action.username,
       });  
+    case types.BACKLOG_QUERYBYPVSUCCESS:
+      return Object.assign({}, state, {
+        backlogsall: action.backlogs,
+      });
     default:
       return state;
   }

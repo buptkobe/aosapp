@@ -91,12 +91,11 @@ class SprintScreen extends Component {
 		      alert('hello!');
 		    }
 	  	};
-	  	var leftButtonConfig = {
-		    title: <Icon name="arrow-back" size={18}></Icon>,
-		    handler: function onBack() {
-		      Actions.pop();
-		    },
-	  	};
+	  	var leftButtonConfig = 
+	        <TouchableOpacity style={{justifyContent: 'center',marginLeft:10}}
+	        	onPress={()=>{Actions.pop()}} >
+	          <Icon name="arrow-back" size={18}></Icon>
+	        </TouchableOpacity>;
 
 	  	var titleConfig = {
 		    title: 'sprint列表',

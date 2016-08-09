@@ -42,7 +42,7 @@ class FacebookExample extends Component {
         <Text style={styles.text}>其他信息</Text>
         <View style={styles.card}>
           <Text>添加时间：{this.props.inserttime}</Text>
-          <Text>修改时间：{this.props.updatetime}</Text>
+          <Text>{'\n'}修改时间：{this.props.updatetime}</Text>
         </View>
       </ScrollView>
     </ScrollableTabView>

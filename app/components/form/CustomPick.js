@@ -49,55 +49,16 @@ class CustomPick extends React.Component {
     super(props);
     this.state = {
       value: props.value || '',
-      optionsdata: [],
+      optionsdata: props.optionsdata,
     };
     if (props.value) {
       this.props.onChange && this.props.onChange(props.value);
     }
   }
 
-  handleChange(event) {
-    const value = event.nativeEvent.text;
-    this.setState({
-      value,
-    });
-    this.props.onChange && this.props.onChange(value);
-    try {
-      this.props.validator && this.props.validator(value);
-      this.props.onValidationPass && this.props.onValidationPass();
-    } catch (e) {
-      this.props.onValidationError && this.props.onValidationError(e.message);
-    }
-  }
-
-  fetchProject() {
-    var url = Service.host + Service.projectlist + '&cteamguid=' + this.props.user.user.devgroupid;
-    fetch(url).then(response => response.json())
-    .then(data => this.setState({optionsdata: data}))
-    .catch(e => console.log("Oops, error", e))
-  }
-
-  fetchModule() {
-    var url = Service.host + Service.projectlist + '&cteamguid=' + this.props.user.user.devgroupid;
-    fetch(url).then(response => response.json())
-    .then(data => this.setState({optionsdata: data}))
-    .catch(e => console.log("Oops, error", e))
-  }
-
-  fetchVersion() {
-    var url = Service.host + Service.projectlist + '&cteamguid=' + this.props.user.user.devgroupid;
-    fetch(url).then(response => response.json())
-    .then(data => this.setState({optionsdata: data}))
-    .catch(e => console.log("Oops, error", e))
-  }
-
-  componentWillMount() {
-  	if (this.props.type == 'project')
-  		this.fetchProject();
-  	else if (this.props.type == 'module')
-  		this.fetchModule();
-  	else if (this.props.type == 'version')
-  		this.fetchVersion();
+  handleChange(option) {
+  	this.setState({selectoptionlabel: option.label, selectoptionkey: option.key});
+    this.props.onChange && this.props.onChange(option.key);
   }
 
   render() {
@@ -108,10 +69,10 @@ class CustomPick extends React.Component {
         	</Text>
 	        <ModalPicker
 	            selectTextStyle={{color:'black'}}
-	            data={this.state.optionsdata}
+	            data={this.props.optionsdata}
 	            initValue="选择"
 	            cancelText="取消"
-	            onChange={(option)=>{ this.setState({selectoptionlabel: option.label, selectoptionkey: option.key}) }} >
+	            onChange={this.handleChange.bind(this)} >
 	            <View style={styles.text}>
 
 	              	<Text>
