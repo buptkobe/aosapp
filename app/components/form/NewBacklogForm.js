@@ -21,9 +21,7 @@ import CustomPick from './CustomPick';
 import NavigationBar from 'react-native-navbar';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import Service from '../../common/service';
-import { query as projectQuery } from '../../actions/projectActions';
-import { query as moduleQuery } from '../../actions/moduleActions';
-import { query as versionQuery } from '../../actions/versionActions';
+
 
 class NewBacklogForm extends Component {
   state = {
@@ -50,19 +48,8 @@ class NewBacklogForm extends Component {
     console.log(ref, change);
     alert(ref);
     if (ref === 'projectPick') {
-      const projectid = change;
-      this.props.moduleQuery(projectid);
-      this.props.versionQuery(projectid);
-      this.setState({
-        moduleoptions:this.props.module.moduleoptions,
-        versionoptions:this.props.version.versionoptions,
-      });
+      
     }
-  };
-
-  componentDidMount() {
-    const teamid = this.props.user.user.devgroupid;
-    this.props.projectQuery(teamid);
   };
 
   render() {
@@ -117,22 +104,19 @@ class NewBacklogForm extends Component {
               >
                 <CustomPick 
                   ref={"projectPick"} 
-                  selectoptionlabel={""}
-                  optionsdata={this.props.project.projectoptions}
+                  
                   value={""}
                   onChange={(value)=>{this.refs.projectPick.value=value}}
                   title="项目"/>
                 <CustomPick  
                   ref={"modulePick"} 
-                  selectoptionlabel={""}
-                  optionsdata={this.state.moduleoptions}
+                  
                   value={""}
                   onChange={(value)=>{this.refs.modulePick.value=value}}
                   title="模块"/>
                 <CustomPick  
                   ref={"versionPick"} 
-                  selectoptionlabel={""}
-                  optionsdata={this.state.versionoptions}
+                  
                   value={""}
                   onChange={(value)=>{this.refs.versionPick.value=value}}
                   title="版本"/>
@@ -218,20 +202,14 @@ var styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  const { user,project,module,version } = state;
+  const { user } = state;
 
   return {
     user,
-    project,
-    module,
-    version
   }
 }
 
 const actions = {
-    projectQuery,
-    moduleQuery,
-    versionQuery
 }
 
 export default connect(mapStateToProps, actions)(NewBacklogForm);

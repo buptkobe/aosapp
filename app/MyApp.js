@@ -1,7 +1,7 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {StatusBarIOS, Text, View, Navigator, StyleSheet, StatusBar, Platform} from 'react-native';
+import {StatusBarIOS, Text, View, Navigator, StyleSheet, Platform} from 'react-native';
 import { connect } from 'react-redux';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -27,6 +27,11 @@ import BacklogAdd from './components/backlog/BacklogAdd';
 import NewBacklogForm from './components/form/NewBacklogForm';
 import BacklogListBySprint from './components/backlog/BacklogListBySprint';
 import BacklogListByPV from './components/backlog/BacklogListByPV';
+import GridScene from './components/weui/GridScene';
+import CellScene from './components/weui/CellScene';
+import SearchBarScene from './components/weui/SearchBarScene';
+import StatusBar from './components/weui/StatusBar';
+import ActionSheetScene from './components/weui/ActionSheetScene';
 
 class TabIcon extends Component {
   render() {
@@ -88,6 +93,11 @@ export default class MyApp extends Component {
           <Scene key="modal" component={Modal} >
 
             <Scene key="root" hideNavBar hideTabBar>
+                <Scene key="actionsheet" component={ActionSheetScene} title="actionsheet" initial={true}/>
+                <Scene key="statusbar" component={StatusBar} title="status" initial={false}/>
+                <Scene key="searchbarscene" component={SearchBarScene} title="cell" initial={false}/>
+                <Scene key="cellscene" component={CellScene} title="cell" initial={false}/>
+                <Scene key="gridscene" component={GridScene} title="Grid" initial={false}/>
                 <Scene key="register" component={Register} title="Register"/>
                 <Scene key="listexample" component={ListExample} title="List1"/>
                 <Scene key="backlogdetail" component={BacklogDetail} title="任务详情"/>
@@ -99,7 +109,7 @@ export default class MyApp extends Component {
                 <Scene key="sprintlist" component={SprintScreen} title="sprintlist"/>
                 <Scene key="backloglistbysprint" component={BacklogListBySprint} title="backloglistbysprint"/>
                 <Scene key="backloglistbypv" component={BacklogListByPV} title="backloglistbypv"/>
-                <Scene key="tabbar" initial={true}>
+                <Scene key="tabbar" >
 
                   <Scene key="main" tabs={true} tabBarStyle={styles.tabBar} default="backlog" duration={1} >
                     <Scene
