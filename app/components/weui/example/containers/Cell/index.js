@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   StyleSheet,
   ScrollView,
   Image,
-} from 'react-native';
+} from 'react-native'
 import {
   Cells,
   CellsTitle,
@@ -21,10 +21,7 @@ import {
   CheckboxCells,
   Uploader,
   Select,
-  Button,
-  ButtonArea
-} from 'rn-weui/src';
-import S from 'react-native-stylekit';
+} from 'rn-weui/src'
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -106,7 +103,6 @@ class CellScene extends Component {
     this.handleSelectChange = this.handleSelectChange.bind(this)
   }
   setSelect(value) {
-    alert(value);
     this.setState({ select: value })
   }
   handleUploadChange(files) {
@@ -274,7 +270,6 @@ class CellScene extends Component {
                 placeholder="请输入评论"
                 value={this.state.textarea}
                 onChange={this.handleTextareaChange}
-                underlineColorAndroid="transparent"
               />
             </CellBody>
           </Cell>
@@ -288,7 +283,6 @@ class CellScene extends Component {
                 value={this.state.selectedValue}
                 onChange={this.handleSelectChange}
                 placeholder="请选择"
-                pickerTitle="hello"
               />
             </CellBody>
             <CellFooter />
@@ -308,14 +302,6 @@ class CellScene extends Component {
             <CellFooter />
           </Cell>
         </Cells>
-
-        <CellsTitle>提交</CellsTitle>
-        <ButtonArea>
-          <Button type="primary" onPress={() => {alert(this.state.select[0])}} style={S.mt15}>按钮</Button>
-          <Button type="primary" disabled onPress={() => {}} style={S.mt15}>按钮</Button>
-        </ButtonArea>
-
-        
       </ScrollView>
     )
   }

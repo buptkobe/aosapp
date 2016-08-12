@@ -32,6 +32,7 @@ import CellScene from './components/weui/CellScene';
 import SearchBarScene from './components/weui/SearchBarScene';
 import StatusBar from './components/weui/StatusBar';
 import ActionSheetScene from './components/weui/ActionSheetScene';
+import WeuiExample from './components/weui/example/WeuiExample';
 
 class TabIcon extends Component {
   render() {
@@ -93,7 +94,8 @@ export default class MyApp extends Component {
           <Scene key="modal" component={Modal} >
 
             <Scene key="root" hideNavBar hideTabBar>
-                <Scene key="actionsheet" component={ActionSheetScene} title="actionsheet" initial={true}/>
+                <Scene key="weuiexample" component={WeuiExample} title="WeuiExample" initial={true}/>
+                <Scene key="actionsheet" component={ActionSheetScene} title="actionsheet" initial={false}/>
                 <Scene key="statusbar" component={StatusBar} title="status" initial={false}/>
                 <Scene key="searchbarscene" component={SearchBarScene} title="cell" initial={false}/>
                 <Scene key="cellscene" component={CellScene} title="cell" initial={false}/>

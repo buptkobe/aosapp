@@ -1,10 +1,11 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import {
   StyleSheet,
   View,
   Image,
-} from 'react-native'
-import { Grids } from 'rn-weui/src'
+} from 'react-native';
+import { Grids } from 'rn-weui/src';
+import { Actions } from 'react-native-router-flux';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -20,18 +21,18 @@ class GridScene extends Component {
   		const grids = [{
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_button.png' }} />,
 		    label: 'Button',
-		    onPress() { return __NAV__.push({ scene: 'Button', title: 'Button' }) },
-		     style: {height:100}
+		    onPress() { Actions.cellscene() },
+		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_cell.png' }} />,
 		    label: 'Cell',
-		    onPress() { return __NAV__.push({ scene: 'Cell', title: 'Cell' }) },
-		     style: {height:100}
+		    onPress() { Actions.tabbar() },
+		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_toast.png' }} />,
 		    label: 'Toast',
 		    onPress() { return __NAV__.push({ scene: 'Toast', title: 'Toast' }) },
-		     style: {height:100}
+		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_dialog.png' }} />,
 		    label: 'Dialog',
@@ -41,36 +42,42 @@ class GridScene extends Component {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_progress.png' }} />,
 		    label: 'Progress',
 		    onPress() { return __NAV__.push({ scene: 'Progress', title: 'Progress' }) },
-		     style: {height:100}
+		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_msg.png' }} />,
 		    label: 'Msg',
 		    onPress() { return __NAV__.push({ scene: 'Msg', title: 'Msg' }) },
-		     style: {height:100}
+		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_article.png' }} />,
 		    label: 'Article',
-		    onPress() { return __NAV__.push({ scene: 'Article', title: 'Article' }) }
+		    onPress() { return __NAV__.push({ scene: 'Article', title: 'Article' }) },
+		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_actionSheet.png' }} />,
 		    label: 'ActionSheet',
-		    onPress() { return __NAV__.push({ scene: 'ActionSheet', title: 'ActionSheet' }) }
+		    onPress() { return __NAV__.push({ scene: 'ActionSheet', title: 'ActionSheet' }) },
+		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_icons.png' }} />,
 		    label: 'Icons',
-		    onPress() { return __NAV__.push({ scene: 'Icons', title: 'Icons' }) }
+		    onPress() { return __NAV__.push({ scene: 'Icons', title: 'Icons' }) },
+		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_panel.png' }} />,
 		    label: 'Panel',
-		    onPress() { return __NAV__.push({ scene: 'Panel', title: 'Panel' }) }
+		    onPress() { return __NAV__.push({ scene: 'Panel', title: 'Panel' }) },
+		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_tab.png' }} />,
 		    label: 'Tab',
-		    onPress() { return __NAV__.push({ scene: 'Tab', title: 'Tab' }) }
+		    onPress() { return __NAV__.push({ scene: 'Tab', title: 'Tab' }) },
+		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_search_bar.png' }} />,
 		    label: 'SearchBar',
-		    onPress() { return __NAV__.push({ scene: 'SearchBar', title: 'SearchBar' }) }
+		    onPress() { return __NAV__.push({ scene: 'SearchBar', title: 'SearchBar' }) },
+		    style: {height:100}
 		  }];
   		return (
 	    	<View style={styles.wrapper}>

@@ -66,7 +66,6 @@ class ActionSheetScene extends Component {
               onPress: this.hideActionSheet,
             }
           ]}
-          style={{bottom:40}}
         />
       </View>
     )
