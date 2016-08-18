@@ -11,7 +11,11 @@ export default function version(state = initialState, action) {
       return Object.assign({}, state, {
         versionoptions: action.options,
       });
-    
+    case types.VERSION_SELECT:
+      return Object.assign({}, state, {
+        selectedvalue : action.selectedvalue,
+        selectedlabel : action.selectedlabel,
+      });
     case types.VERSION_REQUEST:
       return Object.assign({}, state, {
         cprojectguid: action.projectid,

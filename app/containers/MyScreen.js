@@ -32,8 +32,8 @@ class MyScreen extends Component {
 		};
 
 	    var colors = ['#F4000B', '#17B4FF', '#FFD900', '#F00000'];
-		var tags = ['U', 'A', 'D', 'M'];
-		var items = ['修改密码', '增加联系人', '删除联系人',  '发布公告'];
+		var tags = ['G', 'U', 'A'];
+		var items = [this.props.user.user.devgroup, this.props.user.user.name, '关于我们'];
 		var components = [FlexBoxGridScreen, FlexBoxGridScreen, FlexBoxGridScreen, FlexBoxGridScreen];
 		var JSXDOM = [];
 		for(var i in items){
@@ -51,13 +51,7 @@ class MyScreen extends Component {
 	    return (
 			<ScrollView style={styles.container}>
 				<View style={styles.top}>
-					<View style={{flexDirection: 'row',marginTop:25,marginLeft:10}}>
-						<Icon name="user" size={40} color="#17B4FF"></Icon>
-						<Text style={{marginLeft:20,fontSize:20}}>{user.user.name}</Text>
-					</View>
-					<View style={{flex:1,alignItems:'flex-end',marginTop:25}}>
-						<Icon name="angle-right" size={30}></Icon>
-					</View>
+					<Icon name="user" size={60} color="#17B4FF"></Icon>
 					
 				</View>
 				<View style={styles.wrapper}>
@@ -88,6 +82,7 @@ const styles = StyleSheet.create({
 		borderTopColor: '#ddd',
 		backgroundColor:'#fff',
 		flexDirection: 'row',
+		justifyContent: 'center',
 	},
 	item:{
 		height:40,

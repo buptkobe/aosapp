@@ -59,7 +59,6 @@ class BacklogListScreen extends Component {
     return (
         <BacklogItem
 	          data={rowData}
-	          component={ListExample}
 	          key={rowData.cguid}
 	          istatus={rowData.istatus}
 	          cbrief={rowData.cbrief}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { take, put, call, fork, select } from 'redux-saga/effects'
 import * as types from '../actions/actionTypes';
-import { querySuccess } from '../actions/projectActions';
+import { querySuccess,select as projectSelect} from '../actions/projectActions';
 import Util from '../common/util';
 import Service from '../common/service';
 
@@ -40,7 +40,16 @@ function *watchProjectRequest() {
   }
 }
 
+function *watchPorjectSelect() {
+  while(true) {
+    const { selectedvalue, selectedlabel } = yield take(types.PROJECT_SELECT);
+    
+    yield put(projectSelect(selectedvalue, selectedlabel));
+  }
+}
+
 
 export default function* root() {
   yield fork(watchProjectRequest);
+  yield fork(watchPorjectSelect);
 }

@@ -25,6 +25,7 @@ class BacklogItem extends Component {
     	if (this.props.istatus === 1)
     		lficon = "star-half";
     	else lficon = "done";
+        var i = 0;
         return (
             <TouchableOpacity onPress={this.detail.bind(this)}>
                 

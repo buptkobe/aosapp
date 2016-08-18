@@ -3,9 +3,8 @@
 import React, {Component} from 'react';
 import {StatusBarIOS, Text, View, Navigator, StyleSheet, Platform} from 'react-native';
 import { connect } from 'react-redux';
-
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import { Icon as MIcon } from 'react-native-material-ui';
 import { Router, Scene ,Reducer, Actions, Modal} from 'react-native-router-flux';
 
 import LoginScreen from './containers/LoginScreen';
@@ -33,6 +32,7 @@ import SearchBarScene from './components/weui/SearchBarScene';
 import StatusBar from './components/weui/StatusBar';
 import ActionSheetScene from './components/weui/ActionSheetScene';
 import WeuiExample from './components/weui/example/WeuiExample';
+import PVSelect from './components/PVSelect';
 
 class TabIcon extends Component {
   render() {
@@ -94,7 +94,7 @@ export default class MyApp extends Component {
           <Scene key="modal" component={Modal} >
 
             <Scene key="root" hideNavBar hideTabBar>
-                <Scene key="weuiexample" component={WeuiExample} title="WeuiExample" initial={true}/>
+                <Scene key="weuiexample" component={WeuiExample} title="WeuiExample" initial={false}/>
                 <Scene key="actionsheet" component={ActionSheetScene} title="actionsheet" initial={false}/>
                 <Scene key="statusbar" component={StatusBar} title="status" initial={false}/>
                 <Scene key="searchbarscene" component={SearchBarScene} title="cell" initial={false}/>
@@ -110,10 +110,13 @@ export default class MyApp extends Component {
                 <Scene key="backlogadd" component={BacklogAdd} title="新增backlog"/>
                 <Scene key="sprintlist" component={SprintScreen} title="sprintlist"/>
                 <Scene key="backloglistbysprint" component={BacklogListBySprint} title="backloglistbysprint"/>
-                <Scene key="backloglistbypv" component={BacklogListByPV} title="backloglistbypv"/>
-                <Scene key="tabbar" >
+                <Scene key="pvselect" component={PVSelect} title="pvselect"/>
+                <Scene key="backloglistbypv" component={BacklogListByPV} title="backlog列表"/>
+                
+                <Scene key="tabbar"  initial={true}>
 
                   <Scene key="main" tabs={true} tabBarStyle={styles.tabBar} default="backlog" duration={1} >
+                    
                     <Scene
                       key="backlog"
                       title="任 务"
@@ -122,12 +125,16 @@ export default class MyApp extends Component {
                       component={BacklogListScreen} 
                       />
 
-                      <Scene
-                      key="burndown"
-                      title="燃尽图"
-                      icon={TabIcon}
-                      iconName="bar-chart"
-                      component={BurndownScreen} />
+                     <Scene
+                        key="burndown"
+                        title="燃尽图"
+                        icon={TabIcon}
+                        iconName="bar-chart"
+                        component={BurndownScreen}
+                        rightTitle="..." 
+                        onRight={()=>Actions.pvselect()}
+                        /> 
+                       
 
                       <Scene
                       key="discovery"

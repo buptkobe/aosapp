@@ -2,7 +2,8 @@ import * as types from '../actions/actionTypes';
 
 const initialState = {
   projectoptions: [],
-  projectselected: '',
+  selectedvalue: '',
+  selectedlabel: ''
 };
 
 export default function project(state = initialState, action) {
@@ -13,7 +14,8 @@ export default function project(state = initialState, action) {
       });
     case types.PROJECT_SELECT:
       return Object.assign({}, state, {
-        selected : action.projectid,
+        selectedvalue : action.selectedvalue,
+        selectedlabel : action.selectedlabel,
       });
     case types.PROJECT_REQUEST:
       return Object.assign({}, state, {

@@ -7,10 +7,11 @@ export function query(teamid) {
   }
 }
 
-export function select({projectid}) {
+export function select(selectedvalue, selectedlabel) {
   return {
     type: types.PROJECT_SELECT,
-    projectid
+    selectedvalue,
+    selectedlabel
   }
 }
 

@@ -13,3 +13,11 @@ export function querySuccess({options}) {
     options
   }
 }
+
+export function select(selectedvalue, selectedlabel) {
+  return {
+    type: types.VERSION_SELECT,
+    selectedvalue,
+    selectedlabel
+  }
+}

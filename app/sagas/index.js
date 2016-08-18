@@ -7,6 +7,7 @@ import backlog from './backlogSaga';
 import project from './projectSaga';
 import module from './moduleSaga';
 import version from './versionSaga';
+import burndown from './burndownSaga';
 
 // Consider using takeEvery
 export default function* root() {
@@ -17,4 +18,5 @@ export default function* root() {
   yield fork(project);
   yield fork(module);
   yield fork(version);
+  yield fork(burndown);
 }

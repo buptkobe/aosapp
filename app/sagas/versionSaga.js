@@ -1,7 +1,7 @@
 import React from 'react';
 import { take, put, call, fork, select } from 'redux-saga/effects'
 import * as types from '../actions/actionTypes';
-import { querySuccess } from '../actions/versionActions';
+import { querySuccess, select as versionSelect } from '../actions/versionActions';
 import Util from '../common/util';
 import Service from '../common/service';
 
@@ -40,7 +40,15 @@ function *watchVersionRequest() {
   }
 }
 
+function *watchVersionSelect() {
+  while(true) {
+    const { selectedvalue, selectedlabel } = yield take(types.VERSION_SELECT);
+    
+    yield put(versionSelect(selectedvalue, selectedlabel));
+  }
+}
 
 export default function* root() {
   yield fork(watchVersionRequest);
+  yield fork(watchVersionSelect);
 }

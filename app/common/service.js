@@ -10,6 +10,7 @@ var Service = {
   projectlist: 'dev_project_list',
   versionlist: 'dev_release_list',
   modulelist: 'dev_module_list',
+  burndown: 'pt_aosapp_service_releasegraph',
 };
 
 module.exports = Service;

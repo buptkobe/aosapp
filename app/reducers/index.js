@@ -7,6 +7,7 @@ import backlog from './backlog';
 import project from './project';
 import module from './module';
 import version from './version';
+import burndown from './burndown';
 
 export default combineReducers({
   counter,
@@ -16,5 +17,6 @@ export default combineReducers({
   backlog,
   project,
   module,
-  version
+  version,
+  burndown,
 });
