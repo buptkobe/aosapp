@@ -19,6 +19,18 @@ class FlexBoxGridScreen extends Component {
     Actions.sprintlist();
   };
 
+  grid() {
+    Actions.gridscene();
+  };
+
+  form() {
+    Actions.cellscene();
+  };
+
+  sheet() {
+    Actions.actionsheet();
+  };
+
   render() {
 
     return (
@@ -45,7 +57,27 @@ class FlexBoxGridScreen extends Component {
 	        	</TouchableOpacity>
 	        </View>
 
-          
+          <View style={styles.sbu_view}>
+            
+            <TouchableOpacity style={[styles.sbu_flex, styles.sbu_borderRight]} onPress={this.grid.bind(this)}>
+              <View style={[styles.sub_con_flex, styles.sub_text]}>
+                <Icon name="table" size={24} color="green"></Icon>
+                <Text style={[styles.font16]}>grid</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.sbu_flex, styles.sbu_borderRight]} onPress={this.form.bind(this)}>
+              <View style={[styles.sub_con_flex, styles.sub_text]}>
+                <Icon name="wpforms" size={24} color="black"></Icon>
+                <Text style={[styles.font16]}>form</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.sbu_flex, styles.sbu_borderRight]} onPress={this.sheet.bind(this)}>
+              <View style={[styles.sub_con_flex, styles.sub_text]}>
+                <Icon name="bars" size={24} color="red"></Icon>
+                <Text style={[styles.font16]}>actionsheet</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
 	        
         </View>
     );
