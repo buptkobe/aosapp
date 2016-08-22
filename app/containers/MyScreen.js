@@ -8,6 +8,7 @@ import NavigationBar from 'react-native-navbar';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Util from '../common/util';
 import FlexBoxGridScreen from '../containers/FlexBoxGridScreen';
+import { ListItem,Divider } from 'react-native-material-ui';
 
 class MyScreen extends Component {
 	_loadPage = (component, title) => {
@@ -51,19 +52,49 @@ class MyScreen extends Component {
 	    return (
 			<ScrollView style={styles.container}>
 				<View style={styles.top}>
-					<Icon name="user" size={60} color="#17B4FF"></Icon>
+					<Icon name="user" size={80} color="#17B4FF"></Icon>
 					
 				</View>
-				<View style={styles.wrapper}>
-					{JSXDOM}
-				</View>
+				<Divider />
+	                <ListItem
+	                    primaryText={this.props.user.user.devgroup}
+	                    leftIcon={
+	                    	<Text>开发组</Text>
+	                    }
+	                />
+	                <Divider />
+	                <ListItem
+	                    primaryText={this.props.user.user.name}
+	                    leftIcon={
+	                    	<Text>用户名</Text>
+	                    }
+	                    />
+	                <Divider />
+	                <ListItem
+	                    primaryText={'Aisino AOS'}
+	                    leftIcon={
+	                    	<Text>团队</Text>
+	                    }
+	                />   
+	                <Divider />
+	                <ListItem
+	                    primaryText={'航天信息'}
+	                    leftIcon={
+	                    	<Text>公司</Text>
+	                    }
+	                />   
+	                <Divider />
 
 				<View style={{marginTop:30}}>
 					<TouchableOpacity onPress={this._clear}>
-						<View style={[styles.item, {flexDirection:'row'}]}>
-							<Text style={[styles.tag, {color: colors[i]}]}>Q</Text>
-							<Text style={[styles.font,{flex:1}]}>退出登录</Text>
-						</View>
+						 	<Divider />
+			                <ListItem
+			                    primaryText={'退出'}
+			                    leftIcon={
+			                    	<Icon name="sign-out" size={24}/>
+			                    }
+			                />   
+			                <Divider />
 					</TouchableOpacity>
 				</View>
 			</ScrollView>
@@ -77,7 +108,7 @@ const styles = StyleSheet.create({
 		backgroundColor:'#F5F5F5',
 	},
 	top: {
-		height:80,
+		height:100,
 		borderTopWidth: Util.pixel,
 		borderTopColor: '#ddd',
 		backgroundColor:'#fff',

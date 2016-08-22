@@ -31,52 +31,52 @@ class GridScene extends Component {
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_toast.png' }} />,
 		    label: 'Toast',
-		    onPress() { return __NAV__.push({ scene: 'Toast', title: 'Toast' }) },
+		    onPress() { Actions.tabbar() },
 		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_dialog.png' }} />,
 		    label: 'Dialog',
-		    onPress() { return __NAV__.push({ scene: 'Dialog', title: 'Dialog' }) },
+		    onPress() { Actions.tabbar() },
 		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_progress.png' }} />,
 		    label: 'Progress',
-		    onPress() { return __NAV__.push({ scene: 'Progress', title: 'Progress' }) },
+		    onPress() { Actions.tabbar() },
 		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_msg.png' }} />,
 		    label: 'Msg',
-		    onPress() { return __NAV__.push({ scene: 'Msg', title: 'Msg' }) },
+		    onPress() { Actions.tabbar() },
 		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_article.png' }} />,
 		    label: 'Article',
-		    onPress() { return __NAV__.push({ scene: 'Article', title: 'Article' }) },
+		    onPress() { Actions.tabbar() },
 		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_actionSheet.png' }} />,
 		    label: 'ActionSheet',
-		    onPress() { return __NAV__.push({ scene: 'ActionSheet', title: 'ActionSheet' }) },
+		    onPress() { Actions.tabbar() },
 		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_icons.png' }} />,
 		    label: 'Icons',
-		    onPress() { return __NAV__.push({ scene: 'Icons', title: 'Icons' }) },
+		    onPress() { Actions.tabbar() },
 		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_panel.png' }} />,
 		    label: 'Panel',
-		    onPress() { return __NAV__.push({ scene: 'Panel', title: 'Panel' }) },
+		    onPress() { Actions.tabbar() },
 		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_tab.png' }} />,
 		    label: 'Tab',
-		    onPress() { return __NAV__.push({ scene: 'Tab', title: 'Tab' }) },
+		    onPress() { Actions.tabbar() },
 		    style: {height:100}
 		  }, {
 		    icon: <Image style={{ width: 28, height: 28 }} source={{ uri: 'http://weui.github.io/weui/images/icon_nav_search_bar.png' }} />,
 		    label: 'SearchBar',
-		    onPress() { return __NAV__.push({ scene: 'SearchBar', title: 'SearchBar' }) },
+		    onPress() { Actions.tabbar() },
 		    style: {height:100}
 		  }];
   		return (

@@ -70,7 +70,7 @@ class SprintScreen extends Component {
 	                primaryText={rowData.cname}
 	                secondaryText={rowData.dstart + '--' + rowData.dend}
 	                secondaryTextMoreLine={[{
-	                    text: rowData.cremark,
+	                    text: rowData.cremark?rowData.cremark:'',
 
 	                }]}
 	                rightIcon={

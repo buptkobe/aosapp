@@ -17,20 +17,18 @@ const loginData = {
 
 function* loginCall({username, password, devgroupid, devgroup}) {
   
-    const url = Service.host + Service.login;
+    const url = Service.host + Service.login + '&devgroup=' + devgroup;
     const data = {
       username : username,
       password : password,
       devgroupid: devgroupid,
-      devgroup: devgroup,
     };
     console.log('loginData start!');
     loginData = yield call(Util.post, url, data, function(response){
       console.log('response:', response);
     });
     if (loginData.isauthenticated == false) {
-      loginFailure("用户名或密码错误！");
-      alert("用户名或密码错误！");
+      yield put(loginFailure("用户名或密码错误！"));
     } else {
       console.log('loginData end!');
       yield put(loginSuccess(loginData));

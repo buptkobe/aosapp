@@ -88,13 +88,15 @@ class Menu extends Component {
   componentWillMount() {
   	const cteamguid = this.props.user.user.devgroupid;
   	this.props.queryProject(cteamguid);
-  	var ops = this.props.project.projectoptions.map(function(option) {
-  		return {
-  			label: option.label,
-  			value: option.key
-  		}
-  	});
-  	this.setState({projectoptions: ops});
+    setTimeout(() => {
+    	var ops = this.props.project.projectoptions.map(function(option) {
+    		return {
+    			label: option.label,
+    			value: option.key
+    		}
+    	});
+    	this.setState({projectoptions: ops});
+    },500);
   };
 
   render() {

@@ -10,7 +10,9 @@ import Util from '../common/util';
 import Service from '../common/service';
 import ModalBox from 'react-native-modalbox';
 import commonStyle from '../styles/commonstyles';
-import ModalPicker from 'react-native-modal-picker'
+import ModalPicker from 'react-native-modal-picker';
+import {Toast} from 'rn-weui/src';
+import {Divider} from 'react-native-material-ui';
 
 const data = [
     { key: 1, label: 'sunshine' },
@@ -29,12 +31,38 @@ class LoginScreen extends Component {
   };
 
   loginEmail = () => {
+    //this.refs.modal.open();
+    if (this.state.username === '') {
+      this.setState({needusername:true});
+      setTimeout(() => {
+        this.setState({needusername:false});
+      }, 2000);
+      return;
+    }
+
+    if (this.state.devgroupid === '') {
+      this.setState({needgroup:true});
+      setTimeout(() => {
+        this.setState({needgroup:false});
+      }, 2000);
+      return;
+    }
     this.setState({isVisible:true});
     console.log(this.state.username, this.state.password, this.props.actions);
     this.props.actions.loginRequest(this.state.username, this.state.password, 
       this.state.devgroupid, this.state.devgroup);
     //Actions.main();
-    this.setState({isVisible:false});
+    setTimeout(() => {
+    //  this.refs.modal.close();
+      
+      if (!this.props.user.isAuthenticated && this.props.user.errorMessage) {
+
+        this.setState({isVisible:false,isError:true});
+        setTimeout(() => {
+            this.setState({isError:false});
+        }, 2000);
+      }
+    }, 1000);
   };
 
   onChangeName(text){
@@ -64,26 +92,8 @@ class LoginScreen extends Component {
       error = <Text style={{backgroundColor: 'red'}}>{user.errorMessage}</Text>;
     }
 
-    let modalbox;
-    
-    if (this.state.isVisible) {
-      modalbox = <ModalBox style={[commonStyle.modal,commonStyle.justAlign]} 
-                        ref={"modal"} backdropPressToClose={false} 
-                         animationDuration={10}
-                         backdrop={true}
-                         backdropOpacity={0}
-                         isOpen={true}
-                         >
-                         <ActivityIndicator
-                            animating={true}
-                            style={[styles.centering, {height: 80}]}
-                            size="large"
-                          />
-              </ModalBox>;
-    }
-
     return (
-      <View style={styles.container}>
+      <View style={styles.container} ref="f">
       
       <View style={styles.top}>
         
@@ -91,7 +101,7 @@ class LoginScreen extends Component {
           <Image style={styles.logo} source={require('../common/image/start_hightlight.png')}></Image>
         </View>
         <View>
-          {error}
+          
           <View style={styles.inputRow}>
             <View style={{marginLeft:10}}>
               <Icon name="user"></Icon>
@@ -133,6 +143,7 @@ class LoginScreen extends Component {
                     selectTextStyle={{color:'black'}}
                     data={this.state.optionsdata}
                     initValue="选择开发组!"
+                    cancelText="取消"
                     onChange={(option)=>{ this.setState({devgroup: option.label, devgroupid: option.key}) }} >
                     <View style={styles.text}>
                       <Text>
@@ -154,12 +165,29 @@ class LoginScreen extends Component {
         
       </View>
 
-      {modalbox}
-      <View style={styles.bottom}>
-           <Text style={styles.style_view_unlogin}>无法登录？
-           </Text>
-           <Text style={styles.style_view_register}>新用户注册
-           </Text>
+      <ModalBox style={[commonStyle.modal,commonStyle.justAlign]} 
+        ref={"modal"} backdropPressToClose={true} 
+        animationDuration={3}
+        backdrop={true}
+        backdropOpacity={0}
+        isOpen={false}
+      >
+        <ActivityIndicator
+          animating={true}
+          style={[styles.centering, {height: 80}]}
+          size="large"
+        />
+      </ModalBox>
+      <Toast icon="info" show={this.state.needusername} onRequestClose={() => {this._setModalVisible(false)}}>用户名不能为空</Toast>
+      <Toast icon="info" show={this.state.needgroup} onRequestClose={() => {this._setModalVisible(false)}}>开发组不能为空</Toast>
+      <Toast icon="warn" show={this.state.isError} onRequestClose={() => {this._setModalVisible(false)}}>用户名或密码错误</Toast>
+      <Toast icon="loading" show={this.state.isVisible} onRequestClose={() => {this._setModalVisible(false)}}>加载中...</Toast>
+      <View style={{marginTop:150,marginBottom:10}}>
+           <Divider/>
+           <View style={{justifyContent: 'center',alignItems: 'center',}}>
+           <Text >powered by aisino aos</Text>
+           <Text >all rights reserved</Text>
+           </View>
         </View>
 
       </View>

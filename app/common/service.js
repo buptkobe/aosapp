@@ -1,6 +1,6 @@
 /*10.120.16.135:8080  log.aisino.com:8887*/
 var Service = {
-  host:'http://172.31.4.4:8080/aosapp/pt/service?pt_charset=utf-8&formid=',
+  host:'http://log.aisino.com:8887/aosapp/pt/service?pt_charset=utf-8&formid=',
   login: 'pt_aosapp_service_login',
   sprintlist: 'pt_aosapp_service_sprintlist',
   backloglist: 'pt_aosapp_service_activbacklog',

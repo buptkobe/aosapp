@@ -49,14 +49,14 @@ class BacklogListByPV extends Component {
     
     setTimeout(() => {
       this.refs.listview._postRefresh(this.props.backlog.backlogsall);
-    }, 1000);
+    }, 500);
   }
 
   _onFetch(page = 1, callback, options) {
   	this.props.queryByPV(this.state.selectedProject, this.state.selectedVersion);
   	setTimeout(() => {
   		callback(this.props.backlog.backlogsall);
-  	}, 2000);
+  	}, 1000);
   };
 
 
@@ -150,7 +150,7 @@ class BacklogListByPV extends Component {
 
               refreshableTintColor="blue"
               enableEmptySections={true}
-              emptyView={this._renderEmptyView}
+              emptyView={this._renderEmptyView.bind(this)}
             />
           </View>
       </SideMenu>
